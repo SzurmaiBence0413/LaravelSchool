@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('playingsports', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+
+    Schema::create('playingsports', function (Blueprint $table) {
+        $table->foreignId('studentId')->constrained('students')->onDelete('cascade');
+        $table->foreignId('sportId')->constrained('sports')->onDelete('cascade');
+        $table->timestamps();
+
+    });
+}
+
 
     /**
      * Reverse the migrations.
