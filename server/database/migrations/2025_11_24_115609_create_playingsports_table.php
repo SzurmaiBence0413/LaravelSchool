@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('playingsports', function (Blueprint $table) {
+            $table->foreignId('studentId')->constrained('students')->onDelete('cascade');
+            $table->foreignId('sportId')->constrained('sports')->onDelete('cascade');
 
-    Schema::create('playingsports', function (Blueprint $table) {
-        $table->foreignId('studentId')->constrained('students')->onDelete('cascade');
-        $table->foreignId('sportId')->constrained('sports')->onDelete('cascade');
-        $table->timestamps();
+            $table->timestamps();
 
-    });
-}
-
+            $table->primary(['studentId', 'sportId']);
+        });
+    }
 
     /**
      * Reverse the migrations.
