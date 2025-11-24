@@ -13,8 +13,18 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('diakNev');
+            $table->foreignId('schoolclassId')->constrained('schoolclasses');
+            $table->tinyInteger('neme');
+            $table->string('iranyitoszam')->nullable();
+            $table->string('lakHelyseg')->nullable();
+            $table->string('lakCim')->nullable();
+            $table->string('szulHelyseg')->nullable();
+            $table->date('szulDatum')->nullable();
+            $table->string('igazolvanyszam')->nullable();
+            $table->decimal('atlag', 2, 1)->nullable();
+            $table->decimal('osztondij', 10, 0)->nullable();
             $table->timestamps();
-//hgg
         });
     }
 
